@@ -1,0 +1,55 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title>Return reservation</title>{% endblock %}
+{% block content %}
+<div class="container">
+    <form method="POST" action="/return_reservation" > {% csrf_token %} 
+    <h3 class="text-center" style="color: darkred;">Please enter the Reservation Information to return the vehicle</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <br>
+ 
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Vehicle ID</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder=" VIN number" id="rRVin" name="rRVin" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Customer Name</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Example: S. Kapali" id="rRName" name="rRName" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Return Date</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="rRDate" name="rRDate" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Please select to pay now.</label>
+        </div>
+        <div class="col-md-8">
+            <div class="checkbox">
+                <label><input type="checkbox" name="Paynow3"><strong>Pay now.</strong></label>
+              </div>
+         </div>
+    </div>
+    <br>
+    <button type="submit" class="btn" style="margin: auto; display:block;">Return Car</button>
+</form>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+</div>
+
+{% endblock %}

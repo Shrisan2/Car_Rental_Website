@@ -1,0 +1,315 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title> Homepage </title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    .navbar-nav li a:hover{
+      color: #fff;
+    }
+
+    .dropdown-menu li a:hover{
+      background-color: red;
+    }
+
+    .dropdown-menu li a{
+      color: #fff;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .foot p:hover{background-color: red; color:blue}
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  }
+
+
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 80px 120px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+footer{
+  background-color: #2d2d30;
+  padding: 32px;
+  color: #f5f5f5;
+}
+
+footer a:hover{
+
+  color:red;
+  text-decoration: tomato;
+}
+
+.thumbnail{
+  padding: 0 0 15px 0;
+  border-radius: 0;
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  display: inline-block;
+  border: none;
+}
+
+
+.resize{
+  width: 250px;
+  height: 170px;
+  object-fit: fill;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #f1f1f1;
+  border-radius: 0;
+  transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #000;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+    
+.table-wrapper-scroll-y {
+    display: block;
+    }
+
+</style>
+</head>
+
+
+<body>
+<nav class="navbar navbar-inverse navbar-default-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" style="color:gainsboro" >SI Rentals </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
+       
+        <li class="dropdown ">
+          <a class="dropdown-toggle" data-toggle="dropdown" >About Us <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" style="background-color:  #2d2d30;">
+            <li><a href="{% url 'about' %}">Created By</a></li>
+          </ul>
+        </li>
+        <li class="dropdown ">
+          <a class="dropdown-toggle" data-toggle="dropdown" >More <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" style="background-color:  #2d2d30;">
+            <li><a href="{% url 'add_customer' %}">Add a new Customer</a></li>
+            <li><a href="{% url 'add_vehicle' %}">Add a new Vehicle</a></li>
+            <li><a href="{% url 'new_reservation' %}">Add a new Reservation</a></li>
+            <li><a href="{% url 'book_reservation' %}">Book a new Reservation</a></li>
+            <li><a href="{% url 'return_reservation2' %}">Return the Rented Car</a></li>
+            <li><a href="{% url 'view_customer' %}">View Customer Balance</a></li>
+            <li><a href="{% url 'view_vehicle' %}">View Vehicle</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>      
+</nav>
+
+{% block content %}
+<div class="container text-center">
+  <h3 style="color:darkslateblue;"> <strong>SI Rentals</strong>  </h3>
+  <p style="color:darkgreen;"><em>Travel More. Create better Memories!</em></p>
+  <p style="color:darkgreen;">Our Mission is to help you explore new Places.</p>
+  <p style="color:darkred;">For Individual, Family, Business.</p>
+
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+  <h3 style="color:darkslateblue;">Choose from the finest.</h3>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img class="resize" src="{% static 'Mercedes.png' %}" alt="Mercedes">
+      <p><strong>Mercedes</strong></p><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img  class="resize" src="{% static 'BMW.jpg' %}" alt="BMW">
+      <p><strong>BMW</strong></p><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img class="resize" src="{% static 'Audi.png' %}"" alt="Audi">
+      <p><strong>Audi</strong></p><br>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img class="resize" src="{% static 'Acura.png' %}" alt="Acura">
+      <p><strong>Acura</strong></p><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img  class="resize" src="{% static 'Toyota.jpg' %}" alt="Toyota">
+      <p><strong>Toyota</strong></p><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+      <img class="resize" src="{% static 'ford.png' %}"" alt="ford">
+      <p><strong>Ford</strong></p><br>
+      </div>
+    </div>
+  </div>
+  <h3 style="color: maroon;"><em>And many more . . . </em></h3>
+  <br>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  <br>
+  <div class = "container-fluid">
+    <div class="text-center">
+      <h2 style="color:darkgreen;">Choose from the following options.</h2>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'add_customer' %}">Add a new Customer</a></button></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'add_vehicle' %}">Add a new Vehicle</a></button></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'new_reservation' %}">Add a new Reservation</a></button></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'book_reservation' %}">Book a Car</a></button></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'view_customer' %}">View Customer Balance</a></button></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'view_vehicle' %}">View Vehicle in inventory</a></button></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=row>
+      <div class="col-sm-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1> <button class="btn btn-lg"><a href="{% url 'return_reservation2' %}">Return Reservation</a></button></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 
+{% endblock %}
+<footer class="container-fluid text-center foot">
+    <p style="
+  font-size: large;
+  font-family: cursive;
+  ">
+        Created By| Shrisan Kapali | Pema Tamang | Ganesh Kandel | Dat Nguyen
+    </p>
+</footer>
+
+
+</body>
+</html>

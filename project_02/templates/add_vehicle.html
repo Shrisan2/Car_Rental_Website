@@ -1,0 +1,62 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title> Adding a new Vehicle</title>{% endblock %}
+{% block content %}
+
+<div class="container">
+    <form method="POST" action="/add_vehicle" > {% csrf_token %} 
+    <h3 class="text-center">Please Enter Vehicle Information</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Vehicle ID</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter Vehicle ID" id="vID" name="vID" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label  class="form-label">Enter Vehicle Description</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter Vehicle Description" id="vDescription" name="vDescription" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Vehicle Year</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter Vehicle Year" id="vYear" name="vYear" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Vehicle Type</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Type: 1:Compact, 2:Medium, 3:Large, 4:SUV, 5:Truck, 6:VAN" id="vType" name="vType" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label  class="form-label">Enter Vehicle Category</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Category: 0:Basic, 1:Luxury" id="vCategory" name="vCategory" >
+         </div>
+    </div>
+    <br>
+     <button type="submit" class="btn" style="margin: auto; display:block;">Add Vehicle</button>
+    
+</form>
+    
+</div>
+
+{% endblock %}

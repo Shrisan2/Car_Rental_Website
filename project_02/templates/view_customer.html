@@ -1,0 +1,63 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title>All Customer with Active Rental Balance Information</title>{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 class="text-center" style="color: blue; font-family:revert; font-style:italic;">Customer with Active Rental - Balance</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+     <div class="row gx-5"> 
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">    
+            <table class="table table-bordered table-striped mb-0">
+                <thread>
+                    <tr>
+                        <th scope="col">Customer ID</th> </th>
+                        <th scope="col">Customer Name </th>
+                        <th scope="col">Remaining Balance</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    {% if not data  %} <td colspan="3" style="text-align: center; color:red; "><strong>Customer Search is Not Valid</strong> </td>{% endif %}
+                    {% for i in data %}
+                        <tr>
+                            <td >{{i.CustID}}</td>
+                            <td>{{i.Name}}</td>
+                            {% if i.Balance is None %}
+                            <td style="color: rgb(221, 39, 39);">$ 0.00 </td>
+                            {% else %}
+                            <td style="color: rgb(221, 39, 39);">$ {{i.Balance| floatformat:2}}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br>
+    <h3 class="text-center" style="color: blue; font-family:revert; font-style:italic;">Search Customer</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <form method="POST" action="/view_customer2" > {% csrf_token %} 
+        <div class="row">
+            <div class="col-md-4">
+               <label class="form-label">Enter Customer ID</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" placeholder=" Customer ID" id="vcbID" name="vcbID" >
+             </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+               <label class="form-label">Enter Customer Name</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Example: S. Kapali" id="vcbName" name="vcbName" >
+             </div>
+        </div>
+        <br>
+        <button type="submit" class="btn" style="margin: auto; display:block;">Find Customer Balance</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title> Book a new reservation2</title>{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 class="text-center" style="color: blue; font-family:revert; font-style:italic;">Available Cars</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <div class="row gx-5">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar"> 
+        <table class="table table-bordered">
+            <thread>
+                <tr>
+                    <th scope="col">VIN </th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Year</th>
+                </tr>
+            </thread>
+            <tbody>
+                {% for i in data %}
+                     <tr>
+                         <td>{{i.VIN}}</td>
+                         <td>{{i.Description}}</td>
+                         <td>{{i.Year}}</td>
+                       <!---- <td>{{i.Weekly}}</td>
+                         <td>{{i.Daily}}</td> -->
+                     </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+</div>
+
+
+<div class="container">
+    <form method="POST" action="/save_reservation" > {% csrf_token %} 
+    <h3 class="text-center" style="color: green;"">Complete your booking</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Customer ID</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter Customer ID" id="brcID" name="brcID" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label  class="form-label">Enter Vehicle Id</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter VIN number" id="brvID" name="brvID" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Start Date</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" value={{uDate.StartDate}} id="brvID" name="brSD" >
+            <!--<label class="form-control"> {{uDate.StartDate}}</label> -->
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="form-label">Enter Order Date</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="brOd" name="brOd" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Rental Type</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="1 for Daily, 7 for Weekly" id="brType" name="brType" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label  class="form-label">Enter Quantity</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="Enter Quantity" id="brQty" name="brQty" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Return Date </label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" value={{uDate.ReturnDate}} id="brvID" name="brRD" >
+            <!--<label class="form-control">{{uDate.ReturnDate}}</label>-->
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Do you want to make a payment?</label>
+        </div>
+        <div class="col-md-8">
+            <div class="checkbox">
+                <label><input type="checkbox" name="Paynow2"><strong>Pay now.</strong></label>
+              </div>
+         </div>
+    </div>
+    <br>
+     <button type="submit" class="btn" style="margin: auto; display:block;">Submit Rental</button>
+    
+</form>
+    
+</div>
+
+{% endblock %}

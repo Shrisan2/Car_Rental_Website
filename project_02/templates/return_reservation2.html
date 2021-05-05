@@ -1,0 +1,79 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title>Billing Summary</title>{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 class="text-center" style="color: darkgreen; font-family:revert; font-style:italic;">Summary of Reservation</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Name:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{Info.Name}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Customer ID:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{Info.Id}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>VIN:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{Info.Vin}}</em></h4>
+        </div>
+    </div>
+
+    {% for i in data %}
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Rental Order Date:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{i.OrderDate}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Rental Start Date:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{i.StartDate}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Rental Return Date:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{i.ReturnDate}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Rental Payment Date:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>{{i.PaymentDate}}</em></h4>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h4><strong>Total Amount in $:</strong></h4>
+        </div>
+        <div class="col-md-5 text-left">
+           <h4><em>$ {{i.TotalAmount | floatformat:2}}  </em></h4>
+        </div>
+    </div>
+    {% endfor %}
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <h3 class="text-center" style="color: darkred; font-family:revert; font-style:italic;">Thank you for your business</h3>
+</div>
+
+{% endblock %}

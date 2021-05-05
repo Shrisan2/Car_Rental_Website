@@ -1,0 +1,54 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title> Book a new reservation</title>{% endblock %}
+{% block content %}
+
+<div class="container">
+    <form method="POST" action="/book_reservation2" > {% csrf_token %} 
+    <h3 class="text-center">Please make your selection</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <br>
+ 
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Vehicle Type</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder=" 1:Compact, 2:Medium, 3:Large, 4:SUV, 5:Truck, 6:VAN" id="bvType" name="bvType" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label  class="form-label">Enter Vehicle Category</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="0: Basic , 1: Luxury" id="bvCategory" name="bvCategory" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Start Date</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="bSd" name="bSd" >
+         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+           <label class="form-label">Enter Return Date </label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="bRd" name="bRd" >
+         </div>
+    </div>
+    <br>
+     <button type="submit" class="btn" style="margin: auto; display:block;">Find available cars</button>
+</form>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+</div>
+
+{% endblock %}

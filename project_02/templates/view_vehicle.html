@@ -1,0 +1,59 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block title %} <title>View Vehicle</title>{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 class="text-center" style="color: blue; font-family:revert; font-style:italic;">Vehicles in inventory</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+     <div class="row gx-5"> 
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">    
+            <table class="table table-bordered table-striped mb-0">
+                <thread>
+                    <tr>
+                        <th scope="col">VIN number</th> </th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Daily Price</th>
+                    </tr>
+                </thread>
+                <tbody>
+                   {% if not data  %} <td colspan="3" style="text-align: center; color:red; "><strong>Vehicle Search is Non-Applicable</strong> </td>{% endif %}
+                    {% for i in data %}
+                        <tr>
+                            <td >{{i.VIN}}</td>
+                            <td>{{i.Description}}</td>
+                            <td style="color: rgb(221, 39, 39);">$ {{i.Daily | floatformat:2}}</td>
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br>
+    <h3 class="text-center" style="color: blue; font-family:revert; font-style:italic;">Search Car</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <form method="POST" action="/view_vehicle2" > {% csrf_token %} 
+        <div class="row">
+            <div class="col-md-4">
+               <label class="form-label">Enter Vehicle ID</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" placeholder=" Vehicle ID" id="vvVID" name="vvVID" >
+             </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+               <label class="form-label">Enter Desciption</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Example: BMW" id="vvDescription" name="vvDescription" >
+             </div>
+        </div>
+        <br>
+        <button type="submit" class="btn" style="margin: auto; display:block;">Find Vehicle</button>
+    </form>
+</div>
+{% endblock %}
